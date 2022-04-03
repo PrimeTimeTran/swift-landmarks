@@ -32,8 +32,3 @@ struct Landmark: Hashable, Codable {
     }
 }
 
-struct Landmark_Previews: PreviewProvider {
-    static var previews: some View {
-        Landmark()
-    }
-}
