@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-var landmarks: [Landmark] = load("landmarkData.json")
+import Combine
 
+final class ModelData: ObservableObject {
+    @Published var landmarks: [Landmark] = load("landmarkData.json")
+}
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
@@ -29,17 +32,5 @@ func load<T: Decodable>(_ filename: String) -> T {
         return try decoder.decode(T.self, from: data)
     } catch {
         fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
-    }
-}
-
-struct ModelData: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct ModelData_Previews: PreviewProvider {
-    static var previews: some View {
-        ModelData()
     }
 }
