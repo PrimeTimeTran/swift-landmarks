@@ -11,37 +11,50 @@ struct LandmarkDetail: View {
     var landmark: Landmark
 
     var body: some View {
-        ScrollView {
-            MapView(coordinate: landmark.locationCoordinate)
-                .ignoresSafeArea(edges: .top)
-                .frame(height: 300)
+        NavigationView {
+            ScrollView {
+                MapView(coordinate: landmark.locationCoordinate)
+                    .ignoresSafeArea(edges: .top)
+                    .frame(height: 300)
 
-            CircleImage(image: landmark.image)
-                .offset(y: -130)
-                .padding(.bottom, -130)
+                CircleImage(image: landmark.image)
+                    .offset(y: -130)
+                    .padding(.bottom, -130)
+                
+                
+                
+                    Text("PrimeTimeTran")
+                    NavigationLink(
+                        destination: WebView(),
+                        label: {
+                            Text("PrimeTimeTran")
+                        }
+                    )
+                
 
-            VStack(alignment: .leading) {
-                Text(landmark.name)
-                    .font(.title)
+                VStack(alignment: .leading) {
+                    Text(landmark.name)
+                        .font(.title)
 
-                HStack {
-                    Text(landmark.park)
-                    Spacer()
-                    Text(landmark.state)
+                    HStack {
+                        Text(landmark.park)
+                        Spacer()
+                        Text(landmark.state)
+                    }
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+
+                    Divider()
+
+                    Text("About \(landmark.name)")
+                        .font(.title2)
+                    Text(landmark.description)
                 }
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-
-                Divider()
-
-                Text("About \(landmark.name)")
-                    .font(.title2)
-                Text(landmark.description)
+                .padding()
             }
-            .padding()
+            .navigationTitle(landmark.name)
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle(landmark.name)
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
