@@ -27,7 +27,6 @@ struct LandmarkDetail: View {
                             Text(landmark.name)
                         }
                     )
-                
 
                 VStack(alignment: .leading) {
                     Text(landmark.name)
